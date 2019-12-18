@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Carousel</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        height: 500px;
+      }
+      .image-container {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+      .image {
+        width: 100%;
+        opacity: 0;
+        position: absolute;
+      }
+      .container .moveLeftCurrentSlide {
+        animation-name: moveLeftCurrent;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+      .container .moveLeftNextSlide {
+        animation-name: moveLeftNext;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+      @keyframes moveLeftCurrent {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(-100%);
+          opacity: 1;
+        }
+      }
+      @keyframes moveLeftNext {
+        from {
+          transform: translateX(100%);
+          opacity: 1;
+        }
+        to {
+          text-replace: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .container .moveRightCurrentSlide {
+        animation-name: moveRightCurrent;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+      .container .moveRightPrevSlide {
+        animation-name: moveRightPrev;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+      @keyframes moveRightCurrent {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 1;
+        }
+      }
+      @keyframes moveRightPrev {
+        from {
+          transform: translateX(-100%);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      img {
+        width: 100%;
+        height: 500px;
+      }
+      .title {
+        color: white;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(100, 100, 100, 0.5);
+        margin: 0;
+        padding: 15px 0;
+        font-weight: bolder;
+        transform: translateY(-100%);
+      }
+      .relative {
+        position: relative;
+      }
+      button {
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 40px;
+        height: 40px;
+      }
+      button:active {
+        background: rgba(100, 100, 100, 0.5);
+      }
+      button:focus {
+        outline: none;
+      }
+      .prev {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+      .next {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+      .dot-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .active {
+        background-color: slategray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slideshow">
+      <div class="container">
+        <div class="image-container relative">
+          <!-- Image -->
+          <!-- <div class="image">
+            <img src="img/1.jpg" />
+            <p class="title">Caption1</p>
+          </div>
+          <div class="image">
+            <img src="img/2.jpg" />
+            <p class="title">Caption2</p>
+          </div>
+          <div class="image">
+            <img src="img/3.jpg" />
+            <p class="title">Caption3</p>
+          </div>
+          <div class="image">
+            <img src="img/4.jpg" />
+            <p class="title">Caption4</p>
+          </div>
+          <div class="image">
+            <img src="img/5.jpg" />
+            <p class="title">Caption5</p>
+          </div> -->
+        </div>
+        <!-- End image -->
+
+        <!-- Next, prev button -->
+        <div class="button">
+          <button class="prev" onclick="move(-1)">
+            <svg
+              class="svg-20"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-arrow-left"
+              color="white"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </button>
+          <button class="next" onclick="move(1)">
+            <svg
+              class="svg-20"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-arrow-right"
+              color="white"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+        <!-- End Next, prev button -->
+      </div>
+
+      <div class="dot-container"></div>
+    </div>
+    <script src="carousel-ltr.js"></script>
+  </body>
+</html>

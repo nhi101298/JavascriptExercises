@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Form</title>
+    <style>
+      .form {
+        width: fit-content;
+        padding: 40px;
+        box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.15);
+        margin: auto;
+      }
+      h1,
+      p {
+        margin-top: 0;
+      }
+      input,
+      p {
+        margin-bottom: 10px;
+      }
+      .error {
+        display: none;
+        color: red;
+      }
+      input {
+        width: 400px;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: #f1f4f8 solid 2px;
+      }
+      input:focus {
+        outline: none;
+        border-bottom: #a7b9f6 solid 2px;
+      }
+      #submit {
+        max-width: 50%;
+        margin: auto;
+        display: block;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background-color: #42ba96;
+        color: white;
+      }
+      .form1 {
+        position: relative;
+      }
+      .delete {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div name="form" class="form">
+      <h1 style="text-align: center;">REGISTER</h1>
+      <p>Username:</p>
+      <input type="text" name="username" id="username" />
+      <p class="error"></p>
+      <p>Password:</p>
+      <input type="password" name="password" id="password" />
+      <p class="error"></p>
+      <p>Confirm Password:</p>
+      <input type="password" name="cf_password" id="cf_password" />
+      <p class="error"></p>
+      <br />
+      <div id="sub-form">
+        <div
+          name="form1"
+          class="form1"
+          style="padding: 30px; border: rgb(219, 205, 205) solid 1px;"
+        >
+          <select name="subject" id="subject" class="select">
+            <option value="">Select a subject</option>
+            <option value="0">PHP</option>
+            <option value="1">Java</option>
+          </select>
+          <select name="teacher" id="teacher" class="select">
+            <option value="">Select a teacher</option>
+            <option value="0">Mary</option>
+            <option value="1">John </option>
+          </select>
+          <br />
+          <textarea rows="10" cols="40" id="note" class="note"></textarea>
+          <button class="delete" onclick="del(this)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-x"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <p class="error"></p>
+        </div>
+      </div>
+      <button onclick="add()">Add</button>
+      <br />
+      <input
+        type="button"
+        name="submit"
+        id="submit"
+        value="Submit"
+        onclick="validate()"
+      />
+    </div>
+
+    <script src="form.js"></script>
+  </body>
+</html>
